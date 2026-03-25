@@ -9,7 +9,7 @@ load_dotenv()
 
 # ── Page config ──────────────────────────────────────────────
 st.set_page_config(
-    page_title="AI Resume Critiquer",
+    page_title="ResumeIQ: AI-Powered ATS Scoring Engine",
     page_icon="📄",
     layout="centered",
     initial_sidebar_state="collapsed",
@@ -232,7 +232,7 @@ def score_color(score: int) -> str:
 
 # ── UI ────────────────────────────────────────────────────────
 
-st.markdown('<div class="hero-title">📄 AI Resume Critiquer</div>', unsafe_allow_html=True)
+st.markdown('<div class="hero-title">📄 ResumeIQ: AI-Powered ATS Scoring Engine</div>', unsafe_allow_html=True)
 st.markdown('<div class="hero-sub">Get expert, AI-powered feedback on your resume in seconds.</div>', unsafe_allow_html=True)
 
 # Input columns
