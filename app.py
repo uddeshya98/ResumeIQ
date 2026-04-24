@@ -210,7 +210,7 @@ def parse_response(raw: str) -> dict:
 
     return sections
 
-
+@st.cache_data(show_spinner=False)
 def analyze_resume(resume_text: str, job_role: str, focus: list[str]) -> dict:
     """Call Gemini API and return parsed feedback dict."""
     genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
