@@ -218,7 +218,7 @@ def analyze_resume(resume_text: str, job_role: str, focus: list) -> tuple:
     
     # ✅ FIX 1: gemini-2.0-flash use karo (15 RPM free tier — much better)
     genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-    model  = genai.GenerativeModel("gemini-2.0-flash")
+    model  = genai.GenerativeModel("gemini-2.0-flash-lite")
     prompt = build_prompt(resume_text, job_role, focus)
 
     # ✅ FIX 2: Retry logic — rate limit aaye toh auto 10 sec baad try karo
@@ -230,7 +230,7 @@ def analyze_resume(resume_text: str, job_role: str, focus: list) -> tuple:
         except Exception as e:
             error_str = str(e)
             if ("429" in error_str or "quota" in error_str.lower()) and attempt < 2:
-                wait_time = (attempt + 1) * 10  # 10s → 20s
+                wait_time = (attempt + 1) * 30  # 10s → 20s
                 st.warning(f"⏳ Rate limit hit. Auto-retrying in {wait_time}s... (attempt {attempt+1}/3)")
                 time.sleep(wait_time)
             else:
