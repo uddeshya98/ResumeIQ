@@ -216,9 +216,9 @@ def parse_response(raw: str) -> dict:
 def analyze_resume(resume_text: str, job_role: str, focus: list) -> tuple:
     """Call Gemini API with retry logic and return parsed feedback dict."""
     
-    # ✅ FIX 1: gemini-1.5-flash use karo (15 RPM free tier — much better)
+    # ✅ FIX 1: gemini-2.0-flash use karo (15 RPM free tier — much better)
     genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-    model  = genai.GenerativeModel("gemini-1.5-flash")
+    model  = genai.GenerativeModel("gemini-2.0-flash")
     prompt = build_prompt(resume_text, job_role, focus)
 
     # ✅ FIX 2: Retry logic — rate limit aaye toh auto 10 sec baad try karo
